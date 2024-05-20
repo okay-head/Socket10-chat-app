@@ -190,6 +190,7 @@ export default function SignUp() {
               type='checkbox'
               name='checkbox'
               id='checkbox'
+              className='accent-accent-lavender-darker'
             />
             <div>
               You agree to our{' '}

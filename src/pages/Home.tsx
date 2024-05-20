@@ -14,8 +14,8 @@ export default function Home() {
           <HomeSvg />
           <div className='w-full sm:text-center'>
             <div className='mx-auto w-full'>
-              <h1 className='mt-8 text-5xl tracking-tight'>Flowchat</h1>
-              <p className='text-light-text-black-600 dark:text-dark-text-white-600 mt-4 max-w-xl text-lg sm:mx-auto'>
+              <h1 className='mt-8 text-5xl tracking-tight'>flowchat</h1>
+              <p className='mt-4 max-w-xl text-lg text-light-text-black-600 dark:text-dark-text-white-600 sm:mx-auto'>
                 Communicate with people
               </p>
             </div>

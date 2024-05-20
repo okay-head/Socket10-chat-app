@@ -56,7 +56,7 @@ export default function App() {
   return (
     <div className='app'>
       <Toaster />
-      {/* <Navbar /> */}
+      <Navbar />
       <Routes>
         <Route path='/' />
         <Route index element={<Home />} />
