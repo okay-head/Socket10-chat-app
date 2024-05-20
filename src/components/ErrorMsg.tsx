@@ -3,5 +3,9 @@ type TChildren = {
   children: React.ReactNode
 }
 export default function ErrorMsg({ children }: TChildren) {
-  return <p className='error-elements text-xs text-red-500'>{children}</p>
+  return (
+    <p className='error-elements text-red-500 text-red ms-1 mt-1 text-xs font-light'>
+      {children}
+    </p>
+  )
 }

@@ -23,6 +23,7 @@ export default function Home() {
               <Link
                 to={!user ? '/auth/signin' : '/user/tasks'}
                 state={{ to: '/user/tasks' }}
+                className='rounded-lg'
               >
                 <Button type='accent' classVars='w-full'>
                   Get started

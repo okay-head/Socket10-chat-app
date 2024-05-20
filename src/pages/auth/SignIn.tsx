@@ -9,6 +9,8 @@ import { signinFn } from '../../api/apiCalls'
 import { AxiosError } from 'axios'
 import toast from 'react-hot-toast'
 import useGlobalStore from '../../state/GlobalState'
+import Button from '../../components/Button'
+import LoadingSpinner from '../../assets/LoadingSpinner'
 
 export default function SignIn() {
   const [disabled, setDisabled] = useState(false)
@@ -52,8 +54,8 @@ export default function SignIn() {
     formState: { errors },
   } = useForm<TForm>({
     defaultValues: {
-      email: 'bettercallsaul@lawyer.com',
-      password: 'B3tterCallS4ul',
+      email: '',
+      password: '',
     },
     resolver: zodResolver(formSchema),
   })
@@ -64,82 +66,89 @@ export default function SignIn() {
       duration: 1300,
     })
     setDisabled(true)
-    try {
-      const response: TUserMongo = await signinFn(email, password)
+    // try {
+    //   const response: TUserMongo = await signinFn(email, password)
 
-      // introduce artificial delay for signin
-      setTimeout(() => {
-        setUser({ id: response._id, username: response.username })
-      }, 1000)
-    } catch (error) {
-      toast.dismiss()
-      const err = error as AxiosError
+    //   // introduce artificial delay for signin
+    //   setTimeout(() => {
+    //     setUser({ id: response._id, username: response.username })
+    //   }, 1000)
+    // } catch (error) {
+    //   toast.dismiss()
+    //   const err = error as AxiosError
 
-      // @ts-expect-error: 'message' property is uniform for err objects
-      toast.error(`${err?.response?.data?.message}`)
+    //   // @ts-expect-error: 'message' property is uniform for err objects
+    //   toast.error(`${err?.response?.data?.message}`)
 
-      console.error(err.response)
-      setDisabled(false)
-    }
+    //   console.error(err.response)
+    //   setDisabled(false)
+    // }
   }
   const onErrorHandler: SubmitErrorHandler<TForm> = (err) => console.error(err)
 
   return (
-    <Container>
+    <Container classVars='pt-44'>
       <form
         id='form'
         name='form'
         onSubmit={handleSubmit(onSubmitHandler, onErrorHandler)}
       >
-        <div className='form-container relative mx-auto max-w-md rounded-md border border-[var(--fallback-bc,oklch(var(--bc)/0.2))] px-6 py-10 lg:px-8'>
-          <h1 className='mb-4 block text-2xl font-bold'>Sign in</h1>
+        <div className='form-container relative mx-auto max-w-md rounded-md border-2 border-light-gray-100 px-6 py-10 dark:border-dark-blue-100 lg:px-8'>
+          <h1 className='mb-8 block text-2xl font-bold'>Sign in</h1>
 
-          {/* email */}
-          <div className='relative'>
-            <input
-              {...register('email')}
-              className='input input-md input-bordered mb-2 mt-4 w-full'
-              type='email'
-              name='email'
-              id='email'
-              placeholder='Enter Email'
-            />
-            <ErrorMsg>{errors?.email?.message}</ErrorMsg>
-          </div>
+          <div className='flex flex-col gap-4'>
+            {/* email */}
+            <div className='relative'>
+              <input
+                {...register('email')}
+                className='input-custom'
+                type='email'
+                name='email'
+                id='email'
+                placeholder='Enter Email'
+              />
+              <ErrorMsg>{errors?.email?.message}</ErrorMsg>
+            </div>
 
-          {/* password */}
-          <div className='relative'>
-            <input
-              {...register('password')}
-              className='input input-md input-bordered mb-2 mt-4 w-full'
-              type='password'
-              name='password'
-              id='password'
-              placeholder='Enter Password'
-            />
-            <ErrorMsg>{errors?.password?.message}</ErrorMsg>
+            {/* password */}
+            <div className='relative'>
+              <input
+                {...register('password')}
+                className='input-custom'
+                type='password'
+                name='password'
+                id='password'
+                placeholder='Enter Password'
+              />
+              <ErrorMsg>{errors?.password?.message}</ErrorMsg>
+            </div>
           </div>
 
           <div>
-            <button
-              disabled={disabled}
-              form='form'
-              id='submit'
-              className='btn btn-wide mx-auto my-4 block'
-            >
-              {disabled ? (
-                <span className='loading loading-spinner loading-md'></span>
-              ) : (
-                <span className='text-container mx-auto max-w-max'>
-                  Sign in
-                </span>
-              )}
-            </button>
+            {disabled ? (
+              <button
+                disabled={disabled}
+                form='form'
+                id='submit'
+                className='mx-auto mt-4 block'
+              >
+                <LoadingSpinner />
+              </button>
+            ) : (
+              <button
+                disabled={disabled}
+                form='form'
+                id='submit'
+                className='mx-auto mt-10 block'
+              >
+                <Button span>Sign in</Button>
+              </button>
+            )}
           </div>
-          <p className=' absolute left-1/2 top-[105%] min-w-72 -translate-x-1/2 text-center'>
+          <p className='absolute left-1/2 top-[110%] min-w-72 -translate-x-1/2 text-center'>
             <span>Don't have an account?</span>{' '}
             <span>
-              <Link to='/auth/signup' className='link hover:no-underline'>
+              <Link to='/auth/signup' className='underline hover:no-underline'>
                 Sign up
               </Link>
             </span>

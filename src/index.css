@@ -2,14 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .btn {
-  @apply;
-} */
+.input-custom {
+  @apply w-full rounded-lg border-2 border-light-gray-100 px-3 py-2 outline-none  transition-all placeholder:text-sm focus-within:border-light-gray-600 hover:border-light-gray-600 focus-visible:border-light-gray-600 dark:border-dark-blue-100 dark:bg-[transparent] dark:focus-within:border-dark-text-white-600 dark:hover:border-dark-text-white-600 dark:focus-visible:border-dark-text-white-600;
+}
 
 :root {
   /* --light-gray-100: hsl(270, 10%, 96%);
   --light-gray-300: hsl(0, 0%, 90%); */
 
+  --red: hsl(0, 75%, 50%);
   --light-gray-100: hsl(0, 0%, 90%);
   --light-gray-300: hsl(0, 0%, 75%);
   --light-gray-600: hsl(0, 0%, 53%);
@@ -29,13 +30,23 @@
 }
 
 @font-face {
-  font-family: 'FilsonProRegular';
+  font-family: 'FilsonPro';
   src: url('./fonts/FilsonProRegular.otf') format('opentype');
   font-weight: normal;
 }
+@font-face {
+  font-family: 'FilsonPro';
+  src: url('./fonts/FilsonProLight.otf') format('opentype');
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'FilsonPro';
+  src: url('./fonts/FilsonProThin.otf') format('opentype');
+  font-weight: 100;
+}
 
 body {
-  font-family: 'FilsonProRegular', 'system-ui';
+  font-family: 'FilsonPro', 'system-ui';
 }
 
 .mouse-shrink {

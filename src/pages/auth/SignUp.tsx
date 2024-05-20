@@ -9,6 +9,8 @@ import useGlobalStore from '../../state/GlobalState'
 import toast from 'react-hot-toast'
 import { signupFn } from '../../api/apiCalls'
 import { AxiosError } from 'axios'
+import Button from '../../components/Button'
+import LoadingSpinner from '../../assets/LoadingSpinner'
 
 export default function SignUp() {
   const [disabled, setDisabled] = useState(false)
@@ -77,23 +79,23 @@ export default function SignUp() {
       duration: 1300,
     })
     setDisabled(true)
-    try {
-      const response: TUserMongo = await signupFn(email, password, username)
+    // try {
+    //   const response: TUserMongo = await signupFn(email, password, username)
 
-      // introduce artificial delay for signup
-      setTimeout(() => {
-        setUser({ id: response._id, username: response.username })
-      }, 1000)
-    } catch (error) {
-      toast.dismiss()
-      const err = error as AxiosError
+    //   // introduce artificial delay for signup
+    //   setTimeout(() => {
+    //     setUser({ id: response._id, username: response.username })
+    //   }, 1000)
+    // } catch (error) {
+    //   toast.dismiss()
+    //   const err = error as AxiosError
 
-      // @ts-expect-error: 'message' property is uniform for err objects
-      toast.error(`${err?.response?.data?.message}`)
+    //   // @ts-expect-error: 'message' property is uniform for err objects
+    //   toast.error(`${err?.response?.data?.message}`)
 
-      console.error(err.response)
-      setDisabled(false)
-    }
+    //   console.error(err.response)
+    //   setDisabled(false)
+    // }
   }
 
   const onErrorHandler: SubmitErrorHandler<TForm> = (err) => console.error(err)
@@ -107,71 +109,87 @@ export default function SignUp() {
         name='form'
         onSubmit={handleSubmit(onSubmitHandler, onErrorHandler)}
       >
-        <div className='form-container relative mx-auto max-w-md rounded-md border border-[var(--fallback-bc,oklch(var(--bc)/0.2))] px-6 py-10 lg:px-8'>
-          <h1 className='mb-4 block text-2xl font-bold'>Sign up</h1>
-          {/* -- username -- */}
-          <div className='relative'>
-            <input
-              {...register('username')}
-              className='input input-md input-bordered mb-2 mt-4 w-full'
-              type='text'
-              name='username'
-              id='username'
-              placeholder='Enter Username'
-            />
-            <ErrorMsg>{errors?.username?.message}</ErrorMsg>
+        <div className='form-container relative mx-auto max-w-md rounded-md border-2 border-light-gray-100 px-6 py-10 dark:border-dark-blue-100 lg:px-8'>
+          <h1 className='mb-8 block text-2xl font-bold'>Sign up</h1>
+
+          <div className='flex flex-col gap-4'>
+            {/* -- username -- */}
+            <div className='relative'>
+              <input
+                {...register('username')}
+                className='input-custom'
+                type='text'
+                name='username'
+                id='username'
+                placeholder='Enter Username'
+              />
+              <ErrorMsg>{errors?.username?.message}</ErrorMsg>
+            </div>
+
+            {/* email */}
+            <div className='relative'>
+              <input
+                {...register('email')}
+                className='input-custom'
+                type='email'
+                name='email'
+                id='email'
+                placeholder='Enter Email'
+              />
+              <ErrorMsg>{errors?.email?.message}</ErrorMsg>
+            </div>
+
+            {/* password */}
+            <div className='relative'>
+              <input
+                {...register('password')}
+                className='input-custom'
+                type='password'
+                name='password'
+                id='password'
+                placeholder='Enter Password'
+              />
+              <ErrorMsg>{errors?.password?.message}</ErrorMsg>
+            </div>
           </div>
 
-          {/* email */}
-          <div className='relative'>
-            <input
-              {...register('email')}
-              className='input input-md input-bordered mb-2 mt-4 w-full'
-              type='email'
-              name='email'
-              id='email'
-              placeholder='Enter Email'
-            />
-            <ErrorMsg>{errors?.email?.message}</ErrorMsg>
-          </div>
-
-          {/* password */}
-          <div className='relative'>
-            <input
-              {...register('password')}
-              className='input input-md input-bordered mb-2 mt-4 w-full'
-              type='password'
-              name='password'
-              id='password'
-              placeholder='Enter Password'
-            />
-            <ErrorMsg>{errors?.password?.message}</ErrorMsg>
-          </div>
-
-          <div>
-            <button
-              disabled={!isChecked || disabled}
-              form='form'
-              id='submit'
-              className='btn btn-wide mx-auto my-4 block'
-            >
-              {isChecked && disabled ? (
-                <span className='loading loading-spinner loading-md'></span>
-              ) : (
-                <span className='text-container mx-auto max-w-max'>
+          <div className='mt-10'>
+            {isChecked && disabled ? (
+              <button
+                disabled={!isChecked || disabled}
+                form='form'
+                id='submit'
+                className='mx-auto my-4 block'
+              >
+                <Button
+                  span
+                  classVars='min-w-[6rem]'
+                  disabled={!isChecked || disabled}
+                >
+                  <LoadingSpinner />
+                </Button>
+              </button>
+            ) : (
+              <button
+                disabled={!isChecked || disabled}
+                form='form'
+                id='submit'
+                className='mx-auto my-4 block'
+              >
+                <Button span disabled={!isChecked || disabled}>
                   Sign up
-                </span>
-              )}
-            </button>
+                </Button>
+              </button>
+            )}
           </div>
-          <div className='mx-auto my-4 -mb-1 mt-8 flex max-w-max flex-col items-center gap-3 text-sm lg:flex-row lg:gap-0'>
+
+          <div className='mx-auto my-4 -mb-1 mt-8 flex max-w-max items-center gap-3 text-sm'>
             <input
               disabled={disabled}
               {...register('checkbox')}
               type='checkbox'
               name='checkbox'
               id='checkbox'
-              className='checkbox checkbox-xs me-2'
             />
             <div>
               You agree to our{' '}
@@ -179,17 +197,17 @@ export default function SignUp() {
                 href='https://www.termsfeed.com/public/uploads/2021/12/sample-privacy-policy-template.pdf'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='outline-neutral-grayBlue cursor-pointer font-semibold outline-offset-2 hover:underline'
+                className='cursor-pointer outline-offset-2 hover:underline'
               >
                 Terms and Services
               </a>
             </div>
           </div>
 
-          <p className=' absolute left-1/2 top-[105%] min-w-72 -translate-x-1/2 text-center'>
+          <p className=' absolute left-1/2 top-[110%] min-w-72 -translate-x-1/2 text-center'>
             <span>Already have an account?</span>{' '}
             <span>
-              <Link to='/auth/signin' className='link hover:no-underline'>
+              <Link to='/auth/signin' className='underline hover:no-underline'>
                 Sign in
               </Link>
             </span>

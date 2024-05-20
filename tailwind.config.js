@@ -29,7 +29,7 @@ export default {
           100: '#2b2f3d',
         },
         'text-white': {
-          900: 'hsl(0, 0%, 94%)',
+          900: 'hsl(0, 0%, 96%)',
           600: 'hsl(0, 0%, 70%)',
         },
       },
@@ -37,6 +37,7 @@ export default {
         lavender: 'hsl(266, 100%, 64%)',
         'lavender-darker': 'hsl(266, 100%, 60%)',
       },
+      red: 'hsl(0, 78%, 50%)',
     },
     plugins: [tailwindForms],
   },
