@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .btn {
+  @apply;
+} */
+
+:root {
+  /* --light-gray-100: hsl(270, 10%, 96%);
+  --light-gray-300: hsl(0, 0%, 90%); */
+
+  --light-gray-100: hsl(0, 0%, 90%);
+  --light-gray-300: hsl(0, 0%, 75%);
+  --light-gray-600: hsl(0, 0%, 53%);
+  --text-black-900: hsl(204, 9%, 11%);
+  --text-black-600: hsl(203, 8%, 30%);
+
+  /* Dark */
+  --dark-blue-900: '#1f2128';
+  --dark-blue-600: '#242731';
+  --dark-blue-100: '#2b2f3d';
+  --dark-charcoal-gray: '#2B2E38';
+
+  --text-white-base: hsl(0, 0%, 90%);
+  --text-white-light: hsl(0, 0%, 60%);
+
+  --accent-lavender: hsl(266, 100%, 64%);
+}
+
+@font-face {
+  font-family: 'FilsonProRegular';
+  src: url('./fonts/FilsonProRegular.otf') format('opentype');
+  font-weight: normal;
+}
+
+body {
+  font-family: 'FilsonProRegular', 'system-ui';
+}
+
+.mouse-shrink {
+  scale: 0.97;
+}
