@@ -1,32 +1,33 @@
 import { Link } from 'react-router-dom'
-import { List, Plus, Moon, Sun } from 'react-feather'
+import { Moon, Sun } from 'lucide-react'
 import useGlobalStore from '../../state/GlobalState'
-import { useEffect, useState } from 'react'
-import Button from '../Button'
+import { useEffect } from 'react'
 import toggleTheme from '../../utils/toggleTheme'
 
 export default function Navbar() {
   const { user } = useGlobalStore()
-  const [visible, setvisible] = useState(false)
   useEffect(() => {
     toggleTheme()
   }, [])
   return (
-    <div className='navbar fixed inset-0 bottom-[unset] z-40 w-full bg-dark-text-white-900 px-4 py-3.5 shadow-md dark:bg-dark-blue-600 lg:px-8'>
+    <div className='navbar fixed inset-0 bottom-[unset] z-40 w-full bg-dark-text-white-900 p-4 shadow-md dark:bg-dark-blue-600 lg:px-8'>
       <div className='nav-content flex items-center'>
-        <Link to='/' className='btn btn-ghost btn-sm text-xl font-semibold'>
+        <Link
+          to='/'
+          className='btn btn-ghost btn-sm absolute text-xl font-semibold md:left-1/2 md:-translate-x-1/2 md:text-2xl'
+        >
           flowchat
         </Link>
         <div className='ms-auto flex items-center gap-1'>
           <Link
             to={'auth/signin'}
-            className='rounded-lg px-2 py-1 hover:bg-light-gray-100 dark:hover:bg-dark-blue-100'
+            className='dark:hover:bg-dark-blue-charcoal rounded-lg px-2 py-1 hover:bg-light-gray-100'
           >
             Login
           </Link>
-          <div className='theme relative rounded-lg px-1.5 py-1 hover:bg-light-gray-100 dark:hover:bg-dark-blue-100'>
-            <Moon id='theme-toggle-dark-icon' size={20} className='hidden' />
-            <Sun id='theme-toggle-light-icon' size={20} className='hidden' />
+          <div className='theme dark:hover:bg-dark-blue-charcoal relative rounded-lg px-1.5 py-1 hover:bg-light-gray-100'>
+            <Moon id='theme-toggle-dark-icon' size={22} className='hidden' />
+            <Sun id='theme-toggle-light-icon' size={22} className='hidden' />
             <button id='theme-toggle' className='absolute inset-0 p-3'></button>
           </div>
           {/*  */}

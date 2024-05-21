@@ -12,6 +12,7 @@ export default {
     colors: {
       light: {
         gray: {
+          50: 'hsl(0, 0%, 90%)',
           100: 'hsl(0, 0%, 85%)',
           200: 'hsl(0, 0%, 78%)',
           300: 'hsl(0, 0%, 70%)',
@@ -27,6 +28,7 @@ export default {
           900: '#1f2128',
           600: '#242731',
           100: '#2b2f3d',
+          charcoal: 'hsl(226, 13%, 19%)',
         },
         'text-white': {
           900: 'hsl(0, 0%, 96%)',

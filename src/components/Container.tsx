@@ -5,7 +5,7 @@ type TChildren = {
 export default function Container({ children, classVars = '' }: TChildren) {
   return (
     <div
-      className={`container-custom mx-auto max-w-4xl px-4 pb-10 pt-32 ${classVars}`}
+      className={`container-custom mx-auto max-w-[1400px] px-4 pb-10 pt-32 md:px-8 ${classVars}`}
     >
       {children}
     </div>

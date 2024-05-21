@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .input-custom {
-  @apply w-full rounded-lg border-2 border-light-gray-100 px-3 py-2 outline-none  transition-all placeholder:text-sm focus-within:border-light-gray-600 hover:border-light-gray-600 focus-visible:border-light-gray-600 dark:border-dark-blue-100 dark:bg-[transparent] dark:focus-within:border-dark-text-white-600 dark:hover:border-dark-text-white-600 dark:focus-visible:border-dark-text-white-600;
+  @apply w-full rounded-lg border-2 border-light-gray-100 px-3 py-2 outline-none transition-all placeholder:text-sm placeholder:text-light-gray-300 focus-within:border-light-gray-600 hover:border-light-gray-600 focus-visible:border-light-gray-600 dark:border-dark-blue-100 dark:bg-[transparent] placeholder:dark:text-dark-text-white-600 dark:focus-within:border-dark-text-white-600 dark:hover:border-dark-text-white-600 dark:focus-visible:border-dark-text-white-600;
 }
 
 :root {
@@ -18,26 +18,38 @@
   --text-black-600: hsl(203, 8%, 30%);
 
   /* Dark */
-  --dark-blue-900: '#1f2128';
-  --dark-blue-600: '#242731';
-  --dark-blue-100: '#2b2f3d';
-  --dark-charcoal-gray: '#2B2E38';
+  --dark-blue-900: hsl(227, 13%, 14%);
+  --dark-blue-600: hsl(226, 15%, 17%);
+  --dark-blue-100: hsl(227, 17%, 20%);
+  --dark-charcoal-gray: hsl(226, 13%, 19%);
 
   --text-white-base: hsl(0, 0%, 90%);
   --text-white-light: hsl(0, 0%, 60%);
 
   --accent-lavender: hsl(266, 100%, 64%);
+
+  /* Color guide- */
+  /* 
+  bg-dark-blue-100 ->  borders
+  bg-dark-blue-charcoal ->  dark base for buttons
+  
+  */
 }
 
 @font-face {
   font-family: 'FilsonPro';
   src: url('./fonts/FilsonProRegular.otf') format('opentype');
-  font-weight: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'FilsonPro';
+  src: url('./fonts/FilsonProBook.otf') format('opentype');
+  font-weight: 300;
 }
 @font-face {
   font-family: 'FilsonPro';
   src: url('./fonts/FilsonProLight.otf') format('opentype');
-  font-weight: 300;
+  font-weight: 200;
 }
 @font-face {
   font-family: 'FilsonPro';

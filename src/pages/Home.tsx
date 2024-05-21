@@ -30,7 +30,7 @@ export default function Home() {
                 </Button>
               </Link>
               <a
-                href='https://github.com/okay-head/task-central'
+                href='https://github.com/okay-head/Socket10-chat-app'
                 target='_blank'
                 rel='noopner noreferrer'
                 className='text-center hover:underline'

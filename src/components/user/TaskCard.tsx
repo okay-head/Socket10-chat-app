@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { deleteFn } from '../../api/apiCalls'
 import toast from 'react-hot-toast'
 import { format } from 'fecha'
-import { Edit, Trash, Edit2 } from 'react-feather'
+import { Edit, Trash, Edit2 } from 'lucide-react'
 import { AxiosError } from 'axios'
 import { useNavigate } from 'react-router-dom'
 import useDataStore from '../../state/DataState'
@@ -73,13 +73,13 @@ export default function TaskCard({
           <div className='-mb-3 -mt-2 flex items-end font-medium'>
             <button
               onClick={handleEdit}
-              className='hover: btn btn-ghost btn-xs ms-auto text-xs text-slate-500 '
+              className='hover: btn btn-ghost btn-xs text-slate-500 ms-auto text-xs '
             >
               <Edit2 size={16} />
             </button>
             <button
               onClick={handleDelete}
-              className='btn btn-ghost btn-xs text-xs text-slate-500 hover:bg-red-700'
+              className='btn btn-ghost btn-xs text-slate-500 hover:bg-red-700 text-xs'
             >
               <Trash size={16} />
             </button>
@@ -89,7 +89,7 @@ export default function TaskCard({
             <h2 className='card-title text-2xl  '>{title}</h2>
           </div>
 
-          <h4 className='-mt-1 mb-1 ms-8 text-sm text-neutral-400'>
+          <h4 className='text-neutral-400 -mt-1 mb-1 ms-8 text-sm'>
             {parseDate(updatedAt)}
           </h4>
           <p className='text ms-8'>{description}</p>

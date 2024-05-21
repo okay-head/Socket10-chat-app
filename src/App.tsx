@@ -2,7 +2,7 @@ import toast, { Toaster } from 'react-hot-toast'
 import { Route, Routes } from 'react-router-dom'
 import Navbar from './components/nav/Navbar'
 import SignUp from './pages/auth/SignUp'
-import NotFound from './components/NotFound'
+import NotFound from './pages/NotFound'
 import SignIn from './pages/auth/SignIn'
 import Tasks from './components/user/Tasks'
 // import { useEffect, useRef, useState } from 'react'
@@ -10,6 +10,7 @@ import Tasks from './components/user/Tasks'
 import Logout from './pages/auth/Logout'
 import CheckAuth from './pages/auth/CheckAuth'
 import Home from './pages/Home'
+import Chats from './pages/user/Chats'
 
 export default function App() {
   // const [ready, setReady] = useState(false)
@@ -69,8 +70,9 @@ export default function App() {
         <Route path='*' element={<NotFound />} />
 
         {/* --- 🔒--- */}
-        <Route path='/user' element={<CheckAuth />}>
-          <Route index path='tasks' element={<Tasks />} />
+        {/* <Route path='/user' element={<CheckAuth />}> */}
+        <Route path='/user'>
+          <Route index path='chats' element={<Chats />} />
           <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>

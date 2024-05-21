@@ -18,7 +18,7 @@ export default function Button({
   if (type === 'accent')
     appendClass = `bg-accent-lavender hover:bg-accent-lavender-darker dark:bg-accent-lavender dark:hover:bg-accent-lavender-darker text-dark-text-white-900 ${disabled ? 'opacity-40 hover:bg-accent-lavender  dark:hover:bg-accent-lavender  cursor-not-allowed' : ''}`
   else if (type === 'normal')
-    appendClass = `bg-light-gray-100 hover:bg-light-gray-200 dark:bg-dark-blue-100 dark:hover:bg-dark-blue-900 ${disabled ? 'opacity-40 hover:bg-light-gray-100 dark:hover:bg-dark-blue-100 cursor-not-allowed' : ''}`
+    appendClass = `bg-light-gray-100 hover:bg-light-gray-200 dark:bg-dark-blue-charcoal dark:hover:bg-dark-blue-900 ${disabled ? 'opacity-40 hover:bg-light-gray-100 dark:hover:bg-dark-blue-charcoal cursor-not-allowed' : ''}`
   return span ? (
     <span
       onMouseDown={() => {
